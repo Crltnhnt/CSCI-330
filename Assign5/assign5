@@ -1,0 +1,152 @@
+1.) z1772974@hopper:~/330/Assign5$ grep -n '\(bash\|bush\)' sdata.txt
+9:T90hch1    488   478  0 13:24 pts/3    00:00:00 -bash
+13:z4746903   764   763  0 13:27 pts/18   00:00:00 -bash
+
+2.) z1772974@hopper:~/330/Assign5$ grep -n '[^0-9]' sdata.txt
+1:UID        PID  PPID  C STIME TTY          TIME CMD
+2:root         1     0  0 Oct16 ?        00:01:15 /sbin/init
+3:root                                            root
+4:root        10     2  0 Oct16 ?        00:00:02 [migration/0]
+5:root20
+6:t90hch1    478   442  0 13:24 ?        00:00:00 sshd: t90hch1@pts/3
+7:support
+9:T90hch1    488   478  0 13:24 pts/3    00:00:00 -bash
+10:root20     498     1  0 Oct16 ?        00:00:00 /sbin/mdadm --monitor --scan
+11:root       730  1498  0 13:27 ?        00:00:00 sshd: z1746903 [priv]
+12:z1J46903   763    48  0 13:27 ?        00:00:00 rooot: z1746903@pts/18
+13:z4746903   764   763  0 13:27 pts/18   00:00:00 -bash
+14:root      1492     1  0 Oct16 ?        00:00:32 /usr/sbin/testooooo
+15:daemon    1493   408  1  0 Oct16 ?        00:00:00 /usr/sbin/atd -f
+16:zY6A7846  1716 24089  0 13:35 pts/41   00:00:00 nano +183 Assign5.cpp
+17:z1746903  1751   764  0 13:35 pts/18   00:00:00 nano
+18:z1234567  1799   888                            bAsh
+19:r78959j1   499                                  BUSH
+
+3.)
+
+
+4.) z1772974@hopper:~/330/Assign5$ sed -n '5 p' sdata.txt
+root20
+
+
+5.) z1772974@hopper:~/330/Assign5$ sed -n '10,13 p' sdata.txt
+root20     498     1  0 Oct16 ?        00:00:00 /sbin/mdadm --monitor --scan
+root       730  1498  0 13:27 ?        00:00:00 sshd: z1746903 [priv]
+z1J46903   763    48  0 13:27 ?        00:00:00 rooot: z1746903@pts/18
+z4746903   764   763  0 13:27 pts/18   00:00:00 -bash
+
+
+6.) z1772974@hopper:~/330/Assign5$ sed 's/root/root2/2' sdata.txt
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 Oct16 ?        00:01:15 /sbin/init
+root                                            root2
+root        10     2  0 Oct16 ?        00:00:02 [migration/0]
+root20
+t90hch1    478   442  0 13:24 ?        00:00:00 sshd: t90hch1@pts/3
+support
+
+T90hch1    488   478  0 13:24 pts/3    00:00:00 -bash
+root20     498     1  0 Oct16 ?        00:00:00 /sbin/mdadm --monitor --scan
+root       730  1498  0 13:27 ?        00:00:00 sshd: z1746903 [priv]
+z1J46903   763    48  0 13:27 ?        00:00:00 rooot: z1746903@pts/18
+z4746903   764   763  0 13:27 pts/18   00:00:00 -bash
+root      1492     1  0 Oct16 ?        00:00:32 /usr/sbin/testooooo
+daemon    1493   408  1  0 Oct16 ?        00:00:00 /usr/sbin/atd -f
+zY6A7846  1716 24089  0 13:35 pts/41   00:00:00 nano +183 Assign5.cpp
+z1746903  1751   764  0 13:35 pts/18   00:00:00 nano
+z1234567  1799   888                            bAsh
+r78959j1   499                                  BUSH
+
+7.)z1772974@hopper:~/330/Assign5$ sed -n '/^$/=' sdata.txt
+8
+
+8.) z1772974@hopper:~/330/Assign5$ sed -n '/[\<Tt][0-9]/=' sdata.txt
+2
+4
+5
+6
+9
+10
+14
+15
+
+
+9.)  z1772974@hopper:~/330/Assign5$ sed -n 's/root/master/g p' sdata.txt
+master         1     0  0 Oct16 ?        00:01:15 /sbin/init
+master                                            master
+master        10     2  0 Oct16 ?        00:00:02 [migration/0]
+master20
+master20     498     1  0 Oct16 ?        00:00:00 /sbin/mdadm --monitor --scan
+master       730  1498  0 13:27 ?        00:00:00 sshd: z1746903 [priv]
+master      1492     1  0 Oct16 ?        00:00:32 /usr/sbin/testooooo
+
+
+10.) z1772974@hopper:~/330/Assign5$ sed -n 's#/sbin/init#/home/turing# p' sdata.txt
+root         1     0  0 Oct16 ?        00:01:15 /home/turing
+
+11.) z1772974@hopper:~/330/Assign5$ sed -n '/o\{3,5\}/ p' sdata.txt
+z1J46903   763    48  0 13:27 ?        00:00:00 rooot: z1746903@pts/18
+root      1492     1  0 Oct16 ?        00:00:32 /usr/sbin/testooooo
+
+12.) z1772974@hopper:~/330/Assign5$ sed -n '/root/! p' sdata.txt
+UID        PID  PPID  C STIME TTY          TIME CMD
+t90hch1    478   442  0 13:24 ?        00:00:00 sshd: t90hch1@pts/3
+support
+
+T90hch1    488   478  0 13:24 pts/3    00:00:00 -bash
+z1J46903   763    48  0 13:27 ?        00:00:00 rooot: z1746903@pts/18
+z4746903   764   763  0 13:27 pts/18   00:00:00 -bash
+daemon    1493   408  1  0 Oct16 ?        00:00:00 /usr/sbin/atd -f
+zY6A7846  1716 24089  0 13:35 pts/41   00:00:00 nano +183 Assign5.cpp
+z1746903  1751   764  0 13:35 pts/18   00:00:00 nano
+z1234567  1799   888                            bAsh
+r78959j1   499                                  BUSH
+
+
+13.) UID        PID  PPID  C STIME TTY          TIME CMD
+zY6A7846  1716 24089  0 13:35 pts/41   00:00:00 nano +183 Assign5.cpp
+
+14.)
+
+15.) z1772974@hopper:~/330/Assign5$ sed -n '/root/ c FOUND A ROOT RECORD' sdata.txt
+FOUND A ROOT RECORD
+FOUND A ROOT RECORD
+FOUND A ROOT RECORD
+FOUND A ROOT RECORD
+FOUND A ROOT RECORD
+FOUND A ROOT RECORD
+FOUND A ROOT RECORD
+
+16.)
+
+17.) z1772974@hopper:~/330/Assign5$ sed -n 's/daemon/&DDD/ p' sdata.txt
+daemonDDD    1493   408  1  0 Oct16 ?        00:00:00 /usr/sbin/atd -f
+
+18.) 
+
+
+19.)
+
+
+20.) z1772974@hopper:~/330/Assign5$ sed '19 a END OF FILE' sdata.txt
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 Oct16 ?        00:01:15 /sbin/init
+root                                            root
+root        10     2  0 Oct16 ?        00:00:02 [migration/0]
+root20
+t90hch1    478   442  0 13:24 ?        00:00:00 sshd: t90hch1@pts/3
+support
+
+T90hch1    488   478  0 13:24 pts/3    00:00:00 -bash
+root20     498     1  0 Oct16 ?        00:00:00 /sbin/mdadm --monitor --scan
+root       730  1498  0 13:27 ?        00:00:00 sshd: z1746903 [priv]
+z1J46903   763    48  0 13:27 ?        00:00:00 rooot: z1746903@pts/18
+z4746903   764   763  0 13:27 pts/18   00:00:00 -bash
+root      1492     1  0 Oct16 ?        00:00:32 /usr/sbin/testooooo
+daemon    1493   408  1  0 Oct16 ?        00:00:00 /usr/sbin/atd -f
+zY6A7846  1716 24089  0 13:35 pts/41   00:00:00 nano +183 Assign5.cpp
+z1746903  1751   764  0 13:35 pts/18   00:00:00 nano
+z1234567  1799   888                            bAsh
+r78959j1   499                                  BUSH
+END OF FILE
+

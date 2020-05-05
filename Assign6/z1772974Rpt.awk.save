@@ -1,0 +1,54 @@
+#Print Headers
+BEGIN {
+    print "		ABC Computing		       "
+    print "	 2017 Sales Associates Report	       "
+    print "Name		Position	Sales Amount   "
+    print "============================================"
+    print ""
+
+    #Field separator
+    FS=":"
+    }
+
+#Body / 1
+{
+if(NF == 3)
+   {
+   #Field Variables
+   associateID = $1
+   empName = $2
+   empPosition = $3
+
+   name[associateID] = empName
+   position[associateID] = empPosition
+   }
+
+if(NF == 4)
+   {
+   #Field Variables
+   prodID = $1
+   price = $4
+
+   idSaleAmount[prodID] = price
+   }
+
+if(NF == 5)
+   {
+   #Field Variables
+   prodID = $2
+   quantity = $3
+   saleDate = $4
+   associateID = $5
+
+   if (saleDate ~/2017$/)
+      associateSum[associateID] += (quantity * idSaleAmount[prodID])
+   }
+  }
+
+END {
+   for (x in associateSum)
+     {
+     printf("%-20s %-13s %10.2f\n", name[x], position[x],
+              associateSum[x] |"sort -nr -k 4")
+     }
+}
